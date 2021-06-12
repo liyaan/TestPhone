@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<DirectionalLayout
+    xmlns:ohos="http://schemas.huawei.com/res/ohos"
+    ohos:height="match_parent"
+    ohos:width="match_parent"
+    ohos:orientation="vertical">
+    <DependentLayout
+        ohos:height="match_parent"
+        ohos:width="match_parent">
+        <ListContainer
+            ohos:height="match_parent"
+            ohos:width="match_content"
+            ohos:bottom_margin="40vp"
+            ohos:visibility="hide"
+            ohos:id="$+id:list_view"></ListContainer>
+        <Text
+            ohos:id="$+id:it_value"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:text_size="16fp"
+            ohos:text="开始倒计时"></Text>
+        <Image
+            ohos:id="$+id:it_image"
+            ohos:height="match_content"
+            ohos:below="$id:it_value"
+            ohos:width="match_content"
+            ohos:text_size="16fp"
+            ohos:text="开始倒计时"></Image>
+        <Text
+            ohos:id="$+id:time"
+            ohos:height="match_content"
+            ohos:width="match_content"
+            ohos:center_in_parent="true"
+            ohos:text_size="16fp"
+            ohos:text="开始倒计时"></Text>
+        <Button
+            ohos:id="$+id:btn_zanting"
+            ohos:height="40vp"
+            ohos:width="match_parent"
+            ohos:text_size="19fp"
+            ohos:top_padding="8vp"
+            ohos:bottom_padding="8vp"
+            ohos:center_in_parent="true"
+            ohos:align_parent_bottom="true"
+            ohos:text_color="#fff"
+            ohos:background_element="$graphic:background_button"
+            ohos:text="暂停"></Button>
+    </DependentLayout>
+
+
+</DirectionalLayout>

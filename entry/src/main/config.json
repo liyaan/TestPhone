@@ -1,0 +1,59 @@
+{
+  "app": {
+    "bundleName": "com.liyaan.testphone",
+    "vendor": "liyaan",
+    "version": {
+      "code": 1,
+      "name": "1.0"
+    },
+    "apiVersion": {
+      "compatible": 3,
+      "target": 4
+    }
+  },
+
+  "deviceConfig": {
+    "default": {
+      "network": {
+        "cleartextTraffic": true
+      }
+    }
+  },
+  "module": {
+    "package": "com.liyaan.testphone",
+    "name": ".MyApplication",
+    "deviceType": [
+      "phone"
+    ],
+    "distro": {
+      "deliveryWithInstall": true,
+      "moduleName": "entry",
+      "moduleType": "entry"
+    },
+
+    "reqPermissions": [{
+      "name":"ohos.permission.INTERNET"
+    }],
+    "abilities": [
+      {
+        "skills": [
+          {
+            "entities": [
+              "entity.system.home"
+            ],
+            "actions": [
+              "action.system.home"
+            ]
+          }
+        ],
+        "orientation": "unspecified",
+        "name": "com.liyaan.testphone.MainAbility",
+        "icon": "$media:icon",
+        "description": "$string:mainability_description",
+        "label": "TestPhone",
+        "type": "page",
+        "launchType": "standard"
+      }
+    ]
+  }
+}

@@ -15,7 +15,22 @@
   "deviceConfig": {
     "default": {
       "network": {
-        "cleartextTraffic": true
+        "usesCleartext": true,
+        "securityConfig": {
+          "domainSettings": {
+            "cleartextPermitted": true,
+            "domains": [
+              {
+                "subDomains": true,
+                "name": "api.aitifen.com"
+              },
+              {
+                "subDomains": true,
+                "name": "ost.aitifen.com"
+              }
+            ]
+          }
+        }
       }
     }
   },

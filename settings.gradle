@@ -1,1 +1,1 @@
-include ':entry',':netLibrary'
+include ':entry',':netLibrary', ':oneselfview'

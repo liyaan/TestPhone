@@ -25,7 +25,13 @@
             ohos:below="$id:it_value"
             ohos:width="match_content"
             ohos:text_size="16fp"
-            ohos:text="开始倒计时"></Image>
+            ohos:text="开始倒计时"/>
+        <com.liyaan.oneselfview.RoundImage
+            ohos:id="$+id:it_img_round"
+            ohos:height="200vp"
+            ohos:width="200vp"
+            ohos:background_element="$graphic:background_ability_main"
+            ohos:below="$id:it_image"/>
         <Text
             ohos:id="$+id:time"
             ohos:height="match_content"

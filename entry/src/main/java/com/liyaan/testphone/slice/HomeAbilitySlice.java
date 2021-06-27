@@ -1,5 +1,6 @@
 package com.liyaan.testphone.slice;
 
+import com.liyaan.oneselfview.RoundImage;
 import com.liyaan.testphone.ResourceTable;
 import com.liyaan.testphone.net.Consts;
 import com.liyaan.testphone.net.HttpUtils;
@@ -21,6 +22,7 @@ import java.util.TimerTask;
 public class HomeAbilitySlice extends AbilitySlice {
     private Text text,it_value;
     private Image it_image;
+    private RoundImage it_img_round;
     private Button btn;
     // 计时器对象
     private Timer timer;
@@ -35,6 +37,7 @@ public class HomeAbilitySlice extends AbilitySlice {
         super.setUIContent(ResourceTable.Layout_ability_home);
         text = (Text)findComponentById(ResourceTable.Id_time);
         it_image = (Image) findComponentById(ResourceTable.Id_it_image);
+        it_img_round = (RoundImage) findComponentById(ResourceTable.Id_it_img_round);
         it_value = (Text)findComponentById(ResourceTable.Id_it_value);
         btn = (Button) findComponentById(ResourceTable.Id_btn_zanting);
         if(intent != null){
@@ -43,6 +46,7 @@ public class HomeAbilitySlice extends AbilitySlice {
         }
         new ImageNetWork(this,it_image,"https://ost.aitifen.com/gsvipstu/banner/banner2.jpg")
                 .start();
+        it_img_round.setPixelMapAndCricle(ResourceTable.Media_man);
         mHttpUtils =  new HttpUtils.HttpBuilder().setRequestMethod(1)
                 .setUrl("https://api.aitifen.com/gsvipStu/index/banner/list")
                 .setCallBack(new ZZRCallBack.CallBackString() {
@@ -56,33 +60,32 @@ public class HomeAbilitySlice extends AbilitySlice {
                         HiLog.info(Consts.label,response);
                     }
                 }).getInstance();
-        btn.setClickedListener(new Component.ClickedListener() {
-            @Override
-            public void onClick(Component component) {
-//                HiLog.info(Consts.label,"Failed to visit %{private}s, reason:%{public}d.","aaa","aaaaa");
-                mHttpUtils.sendResqyest();
-                if (flag == true) {
-                    // 当正在计时时，暂停计时
-                    timer.cancel();
-                    timer = null;
-                    getUITaskDispatcher().asyncDispatch(new Runnable() {
-                        @Override
-                        public void run() {
-                            btn.setText("继续");
-                        }
-                    });
-                } else {
-                    // 当暂停计时时，继续计时
-                    createTimer();
-                    getUITaskDispatcher().asyncDispatch(new Runnable() {
-                        @Override
-                        public void run() {
-                            btn.setText("暂停");
-                        }
-                    });
-                }
-                flag = !flag;
+        btn.setClickedListener(component -> {
+            mHttpUtils.sendResqyest();
+            if (flag == true) {
+                // 当正在计时时，暂停计时
+                timer.cancel();
+                timer = null;
+                getUITaskDispatcher().asyncDispatch(new Runnable() {
+                    @Override
+                    public void run() {
+
+                        btn.setText("继续");
+                    }
+                });
+                Intent it= new Intent();
+                present(new TabScrollTabAbilitySlice(),it);
+            } else {
+                // 当暂停计时时，继续计时
+                createTimer();
+                getUITaskDispatcher().asyncDispatch(new Runnable() {
+                    @Override
+                    public void run() {
+                        btn.setText("暂停");
+                    }
+                });
             }
+            flag = !flag;
         });
         // 开始计时
         createTimer();
